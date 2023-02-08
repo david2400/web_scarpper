@@ -1,21 +1,5 @@
 import React, { useContext, useReducer } from 'react';
 
-export const CartItemType = {
-  id: '',
-  name: '',
-  price: 0,
-  image: '',
-  quantity: 0
-};
-
-export const CartState = {};
-
-export const CartAction = {
-  type: 'add' | 'remove',
-  item: CartItemType,
-  quantity: number
-};
-
 const defaultState = {};
 
 const CartItemsContext = React.createContext(defaultState);
@@ -37,8 +21,8 @@ function cartReducers(state, { item, type, quantity = 1 }) {
   const existingCartItem = state[item.id];
 
   switch (type) {
-    case 'add':
-      if (existingCartItem) {
+    case 'add': {
+      if (existingCartItem != undefined) {
         const quantity = existingCartItem.quantity + quantity;
         return {
           ...state,
@@ -56,18 +40,20 @@ function cartReducers(state, { item, type, quantity = 1 }) {
           quantity
         }
       };
-    case 'remove':
-      if (!existingCartItem) {
+    }
+
+    case 'remove': {
+      if (existingCartItem == undefined) {
         return state;
       }
 
-      const newQuantity = existingCartItem.quantity - 1;
-      if (newQuantity > 0) {
+      const quantity = existingCartItem.quantity - 1;
+      if (quantity > 0) {
         return {
           ...state,
           [item.id]: {
             ...existingCartItem,
-            quantity: newQuantity
+            quantity
           }
         };
       }
@@ -75,8 +61,11 @@ function cartReducers(state, { item, type, quantity = 1 }) {
       const newCartItems = { ...state };
       delete newCartItems[item.id];
       return newCartItems;
-    default:
+    }
+
+    default: {
       throw new Error(`Unhandled action type: ${type}`);
+    }
   }
 }
 
@@ -118,7 +107,8 @@ export const useCartMutations = () => {
 
   return {
     addToCart,
-    removeFromCart,
-  }
-}
-export default CartProvider
+    removeFromCart
+  };
+};
+
+export default CartProvider;

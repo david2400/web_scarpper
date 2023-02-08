@@ -1,15 +1,15 @@
 import { AppProps } from 'next/app';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import CartProvider from '@components/layout/cart.js'
+import CartProvider from '@components/layout/cart.js';
 
 const MyApp = ({ Component, pageProps }) => {
   // Aditional props
   // Aditional layout
   // Manejar errores - componentDidCatch
   return (
-    // <CartProvider>
+    <CartProvider>
       <Component {...pageProps} />
-    // </CartProvider>
+    </CartProvider>
   )
 }
 

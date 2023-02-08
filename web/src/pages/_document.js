@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { Container, Row, Col, Nav, NavItem, NavLink } from "react-bootstrap";
 import Navbar from "@components/menu/nav.js";
 import Foot from "@components/footer/foot.js";
 
