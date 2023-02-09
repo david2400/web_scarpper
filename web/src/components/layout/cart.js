@@ -77,16 +77,18 @@ const getCartCount = (sum, item) => sum + item.quantity;
 
 export const useCart = () => {
   const itemsById = useContext(CartItemsContext);
+  console.log(CartItemsContext);
   const items = Object.values(itemsById);
   const count = items.reduce(getCartCount, 0);
   const subTotal = items.reduce(getCartSubTotal, 0);
 
   return {
-    items,
-    itemsById,
-    count,
-    subTotal
+    count
   };
+  // items,
+  //   itemsById,
+  //   count,
+  //   subTotal
 };
 
 export const useCartMutations = () => {

@@ -1,14 +1,13 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from '@components/Layout/Layout';
+import Head from "next/head";
 
 const Home = () => {
   return (
-    <div>
-
+    <div >
+      
     </div>
+  );
 
-  )
 }
 
 export default Home;
