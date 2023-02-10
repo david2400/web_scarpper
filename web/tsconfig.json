@@ -25,6 +25,7 @@
       "@components/*": ["src/components/*"],
       "@resources/*": ["src/resources/*"],
       "@pages/*": ["src/pages/*"],
+      "@common/*": ["src/common/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/login/login.js", "src/pages/index.js"],
