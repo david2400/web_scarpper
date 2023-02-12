@@ -10,9 +10,7 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartItemsContext.Provider value={state}>
-      <CartDispatchContext.Provider value={dispatch}>
-        {children}
-      </CartDispatchContext.Provider>
+      <CartDispatchContext.Provider value={dispatch}>{children}</CartDispatchContext.Provider>
     </CartItemsContext.Provider>
   );
 };
@@ -28,8 +26,8 @@ function cartReducers(state, { item, type, quantity = 1 }) {
           ...state,
           [item.id]: {
             ...existingCartItem,
-            quantity
-          }
+            quantity,
+          },
         };
       }
 
@@ -37,8 +35,8 @@ function cartReducers(state, { item, type, quantity = 1 }) {
         ...state,
         [item.id]: {
           ...item,
-          quantity
-        }
+          quantity,
+        },
       };
     }
 
@@ -53,8 +51,8 @@ function cartReducers(state, { item, type, quantity = 1 }) {
           ...state,
           [item.id]: {
             ...existingCartItem,
-            quantity
-          }
+            quantity,
+          },
         };
       }
 
@@ -83,7 +81,7 @@ export const useCart = () => {
   const subTotal = items.reduce(getCartSubTotal, 0);
 
   return {
-    count
+    count,
   };
   // items,
   //   itemsById,
@@ -98,18 +96,18 @@ export const useCartMutations = () => {
     dispatch({
       type: 'add',
       item: product,
-      quantity
+      quantity,
     });
 
-  const removeFromCart = product =>
+  const removeFromCart = (product) =>
     dispatch({
       type: 'remove',
-      item: product
+      item: product,
     });
 
   return {
     addToCart,
-    removeFromCart
+    removeFromCart,
   };
 };
 

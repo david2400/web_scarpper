@@ -23,11 +23,13 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
       "@resources/*": ["src/resources/*"],
       "@pages/*": ["src/pages/*"],
+      "@services/*": ["src/services/*"],
       "@common/*": ["src/common/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/login/login.js", "src/pages/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/login.js", "src/pages/index.js"],
   "exclude": ["node_modules"]
 }

@@ -1,13 +1,8 @@
 import React from 'react';
-import Head from "next/head";
+import Head from 'next/head';
 
 const Home = () => {
-  return (
-    <div >
-      
-    </div>
-  );
-
-}
+  return <div></div>;
+};
 
 export default Home;
