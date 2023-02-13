@@ -35,7 +35,7 @@ const product = () => {
   return (
     <>
       <div className="grid grid-cols-12 gap-0">
-        <div className="col-span-4">
+        <div className="col-span-2">
         <Bar  ></Bar>
         </div>
         <div className="col-span-8 bg-white">

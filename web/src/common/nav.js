@@ -4,6 +4,7 @@ import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@her
 import Link from 'next/link';
 import Login from '@pages/login';
 import Modal from '@common/modal.js';
+import Cart from '@pages/store/cart/cart.js';
 
 const navigation = {
   categories: [
@@ -134,6 +135,7 @@ function classNames(...classes) {
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
+  const [openCart, setopenCart] = useState(false);
 
   return (
     <>
@@ -312,7 +314,7 @@ export default function Nav() {
                               leaveFrom="opacity-100"
                               leaveTo="opacity-0"
                             >
-                              <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                              <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500 z-40">
                                 {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                                 <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
 
@@ -335,7 +337,7 @@ export default function Nav() {
                                           </div>
                                         ))}
                                       </div>
-                                      <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm">
+                                      <div className="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm z-40">
                                         {category.sections.map((section) => (
                                           <div key={section.name}>
                                             <p id={`${section.name}-heading`} className="font-medium text-gray-900">
@@ -406,11 +408,17 @@ export default function Nav() {
 
                   {/* Cart */}
                   <div className="ml-4 flow-root lg:ml-6">
-                    <Link href="/" className="group -m-2 flex items-center p-2">
+                    <button
+                      className="group -m-2 flex items-center p-2"
+                      onClick={() => {
+                        setopenCart(!openCart);
+                      }}
+                    >
                       <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
                       <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
                       <span className="sr-only">items in cart, view bag</span>
-                    </Link>
+                    </button>
+                    <Cart open={openCart} setOpen={setopenCart }></Cart>
                   </div>
                 </div>
               </div>
