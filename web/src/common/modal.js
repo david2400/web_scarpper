@@ -1,6 +1,5 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Modal({ title,open, setOpen, children }) {
   const cancelButtonRef = useRef(null);
@@ -29,7 +28,7 @@ export default function Modal({ title,open, setOpen, children }) {
                     
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                        {title}
+                        <h2 className="text-center text-blue-700 text-3xl font-semibold my-4">{title}</h2>
                       </Dialog.Title>
                       <div className="mt-2">{children}</div>
                     </div>

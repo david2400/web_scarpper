@@ -1,5 +1,6 @@
 import React from 'react';
 import Bar from '@components/sidebar/bar.js';
+import MultiSelect from '@components/inputs/multiselect.js';
 
 const products = [
   {
@@ -36,7 +37,9 @@ const product = () => {
     <>
       <div className="grid grid-cols-12 gap-0">
         <div className="col-span-2">
-        <Bar  ></Bar>
+        <Bar>
+          <MultiSelect></MultiSelect>
+        </Bar>
         </div>
         <div className="col-span-8 bg-white">
           <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">

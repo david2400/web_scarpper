@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Login from '@pages/login';
 import Modal from '@common/modal.js';
 import Cart from '@pages/store/cart/cart.js';
+import Register from '@register/user/registerUser.js';
 
 const navigation = {
   categories: [
@@ -132,10 +133,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Nav() {
+const Nav = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
   const [openCart, setopenCart] = useState(false);
+  const [openRegister, setopenRegister] = useState(false);
 
   return (
     <>
@@ -385,9 +387,16 @@ export default function Nav() {
                     </button>
 
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                    <Link href="/" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+
+                    <button
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                      onClick={() => {
+                        setopenRegister(!openRegister);
+                      }}
+                    >
                       Create account
-                    </Link>
+                    </button>
+                   
                   </div>
 
                   <div className="hidden lg:ml-8 lg:flex">
@@ -426,9 +435,14 @@ export default function Nav() {
           </nav>
         </header>
       </div>
-      <Modal title="Login" open={openModal} setOpen={setopenModal}>
+      <Modal title="Sign in to your account" open={openModal} setOpen={setopenModal}>
         <Login />
+      </Modal>
+      <Modal title="Register" open={openRegister} setOpen={setopenRegister}>
+        <Register />
       </Modal>
     </>
   );
 }
+
+export default Nav;
